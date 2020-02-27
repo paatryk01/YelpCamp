@@ -1,0 +1,88 @@
+<%- include("../partials/header") %>
+
+
+	<div class="row">
+		<div class="col-md-3">
+			<div class="list-group">
+				<li class="list-group-item"><a href="#">Details</a></li>
+				<li class="list-group-item"><a href="#">Gallery</a></li>
+				<li class="list-group-item"><a href="#">Contact</a></li>
+			</div>
+			<a class="btn btn-info my-3 btn-block" href="/campgrounds/page/1"><i class="fas fa-arrow-circle-left"></i> Go back</a>
+		</div>
+		<div class="col-md-9">
+			<div class="card">
+				<img class="card-img-top" src="<%= campground.image %>">
+				<div class="card-body">
+					<h4 class="card-title float-right">$<%= campground.price %>/night</h4>
+					<h3 class="card-title"><a><%= campground.name %></a>
+						<button type="button" class="btn btn-sm btn-primary ml-2" data-toggle="modal" data-target="#campgroundLikes">
+							<span>Total likes: <i class="fas fa-thumbs-up"></i> <%= campground.likes.length %></span>
+						</button>
+					</h3>
+					<p class="card-text"><%= campground.description %></p>
+					<p class="text-muted float-right"><em>Campground added by <a href="/users/<%= campground.author.id %>"><%= campground.author.username %></a>, 
+						<%= moment(campground.createdAt).fromNow() %></em></p>
+					
+					<div>
+						<form action="/campgrounds/<%= campground._id %>/like" method="POST">
+								<% if (currentUser && campground.likes.some(function (like) {
+									return like.equals(currentUser._id)
+								})) { %>
+									<button class="btn btn-sm btn-primary">
+										<i class="fas fa-thumbs-up"></i> Liked (<%= campground.likes.length %>)
+									</button>
+								<% } else { %>
+									<button class="btn btn-sm btn-secondary">
+										<i class="fas fa-thumbs-up"></i> Like (<%= campground.likes.length %>)
+									</button>
+								<% } %>
+						</form>
+					</div><hr>
+					<div class="btn-group">
+						<% if(currentUser && campground.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin) { %>
+						<div class="card-text mt-1">
+							<a class="btn btn-sm btn-warning" href="/campgrounds/<%= campground._id %>/edit">Edit</a>
+							<form id="delete" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
+								<button class="btn btn-sm btn-danger">Delete</button>
+							</form>
+						</div>	
+						<% } %>
+					</div>
+				</div>
+			</div>
+			<div class="card my-3">
+				<div class="card-body">
+					<a class="btn btn-success float-right" href="/campgrounds/<%= campground._id %>/comments/new">Add a new comment!</a>
+				</div>
+				<hr>
+				<div class="card-body">
+					<% campground.comments.forEach(function(comment){ %>
+						<div class="row">
+							<div class="col-md-12">
+								<strong><a href="/users/<%= campground.author.id %>"><%= comment.author.username %></a></strong>
+									<div class="float-right">
+										<span><%= moment(comment.createdAt).fromNow() %></span>
+									<div>
+									<% if(currentUser && comment.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin) { %>
+									<a class="btn btn-sm btn-warning" href="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>/edit">Edit</a>
+									<form id="delete" action="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+										<button class="btn btn-sm btn-danger">Delete</button>
+									</form>
+								<% } %>
+								</div>
+								</div>
+								
+								<p><%= comment.text %></p>
+								
+							</div>
+						</div>
+					<% }); %>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+<%- include("../partials/footer") %>
+

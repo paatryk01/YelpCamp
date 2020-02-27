@@ -1,0 +1,97 @@
+<%- include("../partials/header") %>
+
+<% if(currentUser && currentUser.isAdmin){ %>
+		<h1>You're an admin</h1>
+<% } %>
+
+	<header class="jumbotron">
+		<div class="container">
+			<h1>Welcome to YelpCamp</h1>
+			<p>View our hand-picked campgrounds from all over the world</p>
+			<p>
+				<a class="btn btn-primary btn-lg" href="/campgrounds/new">Add a new campground!</a>
+			</p>	
+		</div>
+	</header>
+	
+	<div class="row text-center" style="display-flex; flex-wrap:wrap">
+		<div class="col-12">
+			<% if(noMatch !== null){ %>
+				<h3><%= noMatch %></h3>
+				<div class="row d-flex justify-content-center">
+					<div class="col-3 mt-3">
+						<form action="/campgrounds" method="GET" class="input-group">
+							<input type="text" class="form-control" type="text" name="search" placeholder="Search Campgrounds..." aria-label="Search">
+							<div class="input-group-append">
+								<button class="btn btn-danger border-0" type="submit">
+									<i class="fa fa-search"></i>
+								</button>
+							</div>
+						</form>
+						<a class="btn btn-info btn-block my-3" href="/campgrounds/page/1"><i class="fas fa-arrow-circle-left"></i> Go back</a>
+					</div>	
+				</div>
+			<% } %>
+		</div>
+		<% campgrounds.forEach(function(campground){ %>
+			<div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <div class="card">
+                   <img class="card-img-top" src="<%= campground.image %>">
+                    <div class="card-body">
+						<div class="card-title">
+                       		<h5>
+								<%= campground.name %>
+								<span class="badge badge-info ml-2"><i class="fas fa-thumbs-up"></i> <%= campground.likes.length %></span>
+							</h5>
+                   		</div>
+						<p id="addedCamp" class="card-text lead">
+							Added <%= moment(campground.createdAt).fromNow() %>
+						</p>
+						<a href="/campgrounds/<%= campground.id %>" class="btn btn-block btn-outline-primary">More Info</a>
+					</div>
+                </div>
+            </div>
+		<% }); %>
+	</div>
+
+	<div class="row">
+		<div class="col-12 d-flex justify-content-center">
+			<% if (pages > 0) { %>
+				<ul class="pagination text-center">
+					<% if (current == 1) { %>
+						<li class="disabled page-item"><a class="page-link">First</a></li>
+					<% } else { %>
+						<li class="page-item"><a class="page-link" href="/campgrounds/page/1">First</a></li>
+					<% } %>
+					<% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
+					<% if (i !== 1) { %>
+						<li class="disabled page-item"><a class="page-link">...</a></li>
+					<% } %>
+					<% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
+						<% if (i == current) { %>
+							<li class="active page-item"><a class="page-link"><%= i %></a></li>
+						<% } else { %>
+							<li class="page-item"><a class="page-link" href="/campgrounds/page/<%= i %>"><%= i %></a></li>
+						<% } %>
+						<% if (i == Number(current) + 4 && i < pages) { %>
+							<li class="disabled page-item"><a class="page-link">...</a></li>
+						<% } %>
+					<% } %>
+					<% if (current == pages) { %>
+						<li class="disabled page-item"><a class="page-link">Last</a></li>
+					<% } else { %>
+						<li class="page-item"><a class="page-link" href="/campgrounds/page/<%= pages %>">Last</a></li>
+					<% } %>
+				</ul>
+			<% } %>
+		</div>
+	</div>
+	
+			
+
+		
+		
+
+<%- include("../partials/footer") %>
+
+

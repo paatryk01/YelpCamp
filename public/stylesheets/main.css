@@ -1,0 +1,57 @@
+#delete {
+	display:inline;
+}
+
+body {
+	font-family: 'Sansita', sans-serif;
+	margin-top:80px;
+}
+
+a {
+	color:black;
+}
+
+nav {
+	background-color: #fcf5ff;
+}
+
+.nav-item:hover {
+	background-color: #bd7dbb;
+	border-radius:.25rem;
+}
+
+nav .nav-link:hover {
+	color: white;
+}
+
+#brand {
+	font-size:1.5rem;
+}
+
+#brand:hover {
+	background-color:black;
+	border-radius:.25rem;
+}
+
+.navbar-light .navbar-nav .nav-link {
+	color:black;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+	color:white;
+}
+
+@media (max-width: 991px) {
+	.navbar-nav {
+		text-align:center;
+		margin:10px auto;
+		width:50%;
+	}
+}
+
+.btn-sm {
+	padding: .25rem .4rem;
+  	font-size: .875rem;
+  	line-height: .5;
+  	border-radius: .2rem;
+}

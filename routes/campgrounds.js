@@ -64,7 +64,10 @@ router.get("/campgrounds/new", middleware.isLoggedIn, (req,res) => {
 router.get('/campgrounds/:id', async(req,res) => {
 	
 	try {
-		const foundCampground = await Campground.findById(req.params.id).populate('comments');
+		const foundCampground = await Campground.findById(req.params.id).populate({
+			path:'comments',
+			options: {sort: {createdAt: -1}}
+		});
 		res.render("campgrounds/show", {campground:foundCampground});
 	} catch(err) {
 		if(err || !foundCampground){

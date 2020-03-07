@@ -1,7 +1,3 @@
-#delete {
-	display:inline;
-}
-
 body {
 	font-family: 'Sansita', sans-serif;
 	margin-top:80px;
@@ -15,21 +11,24 @@ nav {
 	background-color: #fcf5ff;
 }
 
+nav .nav-link:hover {
+	color: #b812ff;
+}
+
 .nav-item:hover {
-	background-color: #bd7dbb;
 	border-radius:.25rem;
 }
 
-nav .nav-link:hover {
-	color: white;
+#delete {
+	display:inline;
 }
+
 
 #brand {
 	font-size:1.5rem;
 }
 
 #brand:hover {
-	background-color:black;
 	border-radius:.25rem;
 }
 
@@ -38,7 +37,15 @@ nav .nav-link:hover {
 }
 
 .navbar-light .navbar-nav .nav-link:hover {
-	color:white;
+	color:#b812ff;
+	transition:0.5s linear;
+}
+
+.btn-sm {
+	padding: .25rem .4rem;
+  	font-size: .875rem;
+  	line-height: .5;
+  	border-radius: .2rem;
 }
 
 @media (max-width: 991px) {
@@ -47,11 +54,4 @@ nav .nav-link:hover {
 		margin:10px auto;
 		width:50%;
 	}
-}
-
-.btn-sm {
-	padding: .25rem .4rem;
-  	font-size: .875rem;
-  	line-height: .5;
-  	border-radius: .2rem;
 }

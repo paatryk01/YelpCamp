@@ -2,15 +2,18 @@ body {
 	background-color:white;
 }
 
+.nav-item:hover {
+	transition: all 1s ease-in-out;
+}
+
 .jumbotron {
-	/* background-color: #fcf5ff; */
-	background-image: url("https://images.unsplash.com/photo-1499591934245-40b55745b905?ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80");
+	background:linear-gradient(rgba(252, 245, 255, 0.3), rgba(252, 245, 255, 0.3)), url("https://images.unsplash.com/photo-1499591934245-40b55745b905?ixlib=rb 1.2.1&auto=format&fit=crop&w=1352&q=80");
 	background-position:center;
 	font-weight: 300;
 	font-size:1.5rem;
-	/* border:3px solid white; */
 	color:#fcf5ff;
 	margin-bottom:1rem;
+	height: 400px;
 }
 
 .jumbotron p {
@@ -18,15 +21,43 @@ body {
 }
 
 .jumbotron h1{
+	color:black;
 	font-size: 4rem;
 	font-family: 'Sansita', sans-serif;
 	font-weight:700;
 }
 
-.card {
+.single-item {
 	background-color: #fcf5ff;
-	/* border:3px solid white; */
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	transition: all 0.5s linear;
+}
+
+.single-item:hover {
+	box-shadow: 0 8px 12px black;
+}
+
+.img-container{
+	position: relative;
+  	overflow: hidden;
+  	cursor: pointer;
+}
+
+.img-container{
+  	position: relative;
+  	overflow: hidden;
+  	cursor: pointer;
+}
+
+.camp-img{
+  	transition: all 1s ease-in-out;
+}
+
+.img-container:hover .camp-img{
+  	transform: scale(1.2);
+}
+
+.info-button{
+	transition:0.5s linear;
 }
 
 #loginform {

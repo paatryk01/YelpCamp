@@ -3,11 +3,11 @@
 <% if(currentUser && currentUser.isAdmin){ %>
 		<h1>You're an admin</h1>
 <% } %>
-
-	<header class="jumbotron">
-		<div class="container">
-			<h1 class="text-center">Welcome to YelpCamp</h1>
-			<p class="text-center">View our hand-picked campgrounds from all over the world</p>	
+	
+	<header class="jumbotron row justify-content-center align-items-center mx-auto">
+		<div class="container col-12 mx-auto text-center">
+			<h1>Welcome to YelpCamp</h1>
+			<p>View our hand-picked campgrounds from all over the world</p>	
 		</div>
 	</header>
 	<p>
@@ -34,8 +34,10 @@
 		</div>
 		<% campgrounds.forEach(function(campground){ %>
 			<div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-                <div class="card">
-                   <img class="card-img-top" src="<%= campground.image %>">
+                <div class="card single-item">
+					<div class="img-container">
+						<img class="camp-img card-img-top" src="<%= campground.image %>">
+					</div>
                     <div class="card-body">
 						<div class="card-title">
                        		<h5>
@@ -46,7 +48,7 @@
 						<p id="addedCamp" class="card-text lead">
 							Added <%= moment(campground.createdAt).fromNow() %>
 						</p>
-						<a href="/campgrounds/<%= campground.id %>" class="btn btn-block btn-outline-primary">More Info</a>
+						<a href="/campgrounds/<%= campground.id %>" class="btn btn-block btn-outline-primary info-button">More Info</a>
 					</div>
                 </div>
             </div>

@@ -6,14 +6,13 @@
 
 	<header class="jumbotron">
 		<div class="container">
-			<h1>Welcome to YelpCamp</h1>
-			<p>View our hand-picked campgrounds from all over the world</p>
-			<p>
-				<a class="btn btn-primary btn-lg" href="/campgrounds/new">Add a new campground!</a>
-			</p>	
+			<h1 class="text-center">Welcome to YelpCamp</h1>
+			<p class="text-center">View our hand-picked campgrounds from all over the world</p>	
 		</div>
 	</header>
-	
+	<p>
+		<a class="btn btn-primary btn-lg btn-block" href="/campgrounds/new">Add a new campground!</a>
+	</p>
 	<div class="row text-center" style="display-flex; flex-wrap:wrap">
 		<div class="col-12">
 			<% if(noMatch !== null){ %>
@@ -41,7 +40,7 @@
 						<div class="card-title">
                        		<h5>
 								<%= campground.name %>
-								<span class="badge badge-info ml-2"><i class="fas fa-thumbs-up"></i> <%= campground.likes.length %></span>
+								<span class="badge badge-primary ml-2"><i class="fas fa-thumbs-up"></i> <%= campground.likes.length %></span>
 							</h5>
                    		</div>
 						<p id="addedCamp" class="card-text lead">

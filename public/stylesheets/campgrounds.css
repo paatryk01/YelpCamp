@@ -9,7 +9,8 @@ body {
 	font-weight: 300;
 	font-size:1.5rem;
 	/* border:3px solid white; */
-	color:white;
+	color:#fcf5ff;
+	margin-bottom:1rem;
 }
 
 .jumbotron p {

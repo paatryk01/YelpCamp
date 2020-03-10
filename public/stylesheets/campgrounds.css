@@ -1,5 +1,5 @@
 body {
-	background-color:white;
+	background:white;
 }
 
 .nav-item:hover {
@@ -28,7 +28,7 @@ body {
 }
 
 .single-item {
-	background-color: #fcf5ff;
+	background: #fcf5ff;
 	transition: all 0.5s linear;
 }
 

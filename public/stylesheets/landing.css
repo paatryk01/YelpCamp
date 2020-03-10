@@ -21,7 +21,7 @@ body {
 	padding: 10px 45px;
 	font-weight: 400;
 	font-size: 1.5rem;
-	/* background-color:#45f542; */
+	/* background:#45f542; */
 	background-color:gold;
 	border:none;
 	color:black;
@@ -29,7 +29,7 @@ body {
 }
 
 #landing-header a:hover {
-	background-color:#ffe900;
+	background:#ffe900;
 }
 
 .slideshow { 
